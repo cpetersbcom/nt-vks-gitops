@@ -1,7 +1,7 @@
 apiVersion: cluster.x-k8s.io/v1beta2
 kind: Cluster
 metadata:
-  name: sandbox
+  name: sandbox3
   namespace: cpeters-ct6l9
 spec:
   clusterNetwork:
@@ -35,7 +35,7 @@ spec:
     workers:
       machineDeployments:
         - class: node-pool
-          name: sandbox1-np-mk8n
+          name: sandbox3-np-mk8n
           replicas: 1
           metadata:
             annotations:
