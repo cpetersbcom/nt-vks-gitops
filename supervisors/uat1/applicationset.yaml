@@ -34,6 +34,6 @@ spec:
         - CreateNamespace=false
   syncPolicy:
     # Prevents ApplicationSet controller from modifying or deleting Applications
-    applicationsSync: create-only
+    applicationsSync: create-update
     # Prevent an Application's child resources from being deleted, when the parent Application is deleted
     preserveResourcesOnDeletion: true
