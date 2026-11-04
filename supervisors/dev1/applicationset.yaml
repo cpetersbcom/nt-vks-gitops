@@ -14,13 +14,15 @@ spec:
       - path: supervisors/dev1/cluster-*.yaml
   template:
     metadata:
-      name: 'dev1-{{.path.basename}}-cluster'
+      name: 'dev1-{{ trimSuffix ".yaml" .path.filenameNormalized }}'
     spec:
       project: dev1-capi
       source:
         repoURL: https://github.com/cpetersbcom/nt-vks-gitops.git
         targetRevision: HEAD
-        path: '{{.path.path}}'
+        path: 'supervisors/dev1'
+        directory:
+          include: '{{ .path.filename }}'
       destination:
         server: https://auto.vcf02.showcase.tmm.broadcom.lab/proxy/k8s/namespaces/urn:vcloud:namespace:33133489-84b6-404f-b5f2-6c59298d5858
         namespace: cpeters-dev1-zg2v4

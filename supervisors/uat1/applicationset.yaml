@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: uat1-capi
+  namespace: cpeters-uat1-z4w5j
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - git:
+      repoURL: https://github.com/cpetersbcom/nt-vks-gitops.git
+      revision: HEAD
+      files:
+      - path: supervisors/uat1/cluster-*.yaml
+  template:
+    metadata:
+      name: 'uat1-{{ trimSuffix ".yaml" .path.filenameNormalized }}'
+    spec:
+      project: uat1-capi
+      source:
+        repoURL: https://github.com/cpetersbcom/nt-vks-gitops.git
+        targetRevision: HEAD
+        path: 'supervisors/uat1'
+        directory:
+          include: '{{ .path.filename }}'
+      destination:
+        server: https://auto.vcf02.showcase.tmm.broadcom.lab/proxy/k8s/namespaces/urn:vcloud:namespace:0345a3a3-3a85-4a59-acb7-f7fa409c8f04
+        namespace: cpeters-uat1-z4w5j
+      syncPolicy:
+        automated:
+          prune: false
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=false
+  syncPolicy:
+    # Prevents ApplicationSet controller from modifying or deleting Applications
+    applicationsSync: create-only
+    # Prevent an Application's child resources from being deleted, when the parent Application is deleted
+    preserveResourcesOnDeletion: true
