@@ -1,0 +1,17 @@
+apiVersion: addons.kubernetes.vmware.com/v1alpha1
+kind: AddonInstall
+metadata:
+  name: cert-manager-sandbox1
+  namespace: cpeters-dev1-zg2v4
+spec:
+  addonRef:
+    name: cert-manager
+  clusters:
+  - selector:
+      matchLabels:
+        cluster.x-k8s.io/cluster-name: experiment1
+  crossNamespaceSelection: Blocked
+  releaseFilter:
+    ref:
+      name: cert-manager.kubernetes.vmware.com.1.20.3-vmware.1-vks.1
+  stopMatchingBehavior: Delete
