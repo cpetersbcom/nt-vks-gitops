@@ -1,0 +1,12 @@
+apiVersion: argocd-service.vsphere.vmware.com/v1alpha1
+kind: ManagedEntity
+metadata:
+  name: sandbox1-cpeters-ct6l9-default-project
+  namespace: cpeters-ct6l9
+spec:
+  targetRef:
+    apiGroup: cluster.x-k8s.io
+    kind: Cluster
+    name: sandbox1
+    namespace: cpeters-ct6l9
+    project: default-project
