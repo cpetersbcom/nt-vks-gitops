@@ -1,0 +1,42 @@
+apiVersion: cluster.x-k8s.io/v1beta2
+kind: Cluster
+metadata:
+  name: experiment1234
+  namespace: cpeters-dev1-zg2v4
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks:
+        - 10.95.0.0/16
+    services:
+      cidrBlocks:
+        - 10.96.0.0/12
+    serviceDomain: cluster.local
+  topology:
+    classRef:
+      name: builtin-generic-v3.7.0
+      namespace: vmware-system-vks-public
+    version: v1.35.8---vmware.2-vkr.3
+    variables:
+      - name: vmClass
+        value: best-effort-medium
+      - name: storageClass
+        value: lvn-w01d-cl01-optimal-datastore-default-policy-autoraid
+      - name: vsphereOptions
+        value:
+          persistentVolumes:
+            defaultStorageClass: >-
+              lvn-w01d-cl01-optimal-datastore-default-policy-autoraid-latebinding
+    controlPlane:
+      replicas: 1
+      metadata:
+        annotations:
+          run.tanzu.vmware.com/resolve-os-image: os-name=photon
+    workers:
+      machineDeployments:
+        - class: node-pool
+          name: experiment1234-np-mk8n
+          replicas: 1
+          metadata:
+            annotations:
+              run.tanzu.vmware.com/resolve-os-image: os-name=photon
