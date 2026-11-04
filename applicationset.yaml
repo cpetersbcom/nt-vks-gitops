@@ -10,8 +10,8 @@ spec:
   - git:
       repoURL: https://github.com/cpetersbcom/nt-vks-gitops.git
       revision: HEAD
-      directories:
-      - path: supervisors/dev1/*
+      files:
+      - path: supervisors/dev1/*/cluster.yaml
   template:
     metadata:
       name: 'dev1-{{.path.basename}}-cluster'
