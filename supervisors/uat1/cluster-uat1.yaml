@@ -35,7 +35,7 @@ spec:
     workers:
       machineDeployments:
         - class: node-pool
-          name: uat1-np
+          name: uat1-np-z4w5j
           replicas: 1
           metadata:
             annotations:
