@@ -34,10 +34,10 @@ spec:
       groups:
         - christopher.peters@broadcom.com
       policies:
-        - p, proj:dev1-capi:observer, applications, get, platform-bootstrap/*, allow
+        - p, proj:dev1-capi:observer, applications, get, dev1-capi/*, allow
     - name: operator
       groups:
         - christopher.peters@broadcom.com
       policies:
-        - p, proj:dev1-capi:operator, applications, get, platform-bootstrap/*, allow
-        - p, proj:dev1-capi:operator, applications, sync, platform-bootstrap/*, allow
+        - p, proj:dev1-capi:operator, applications, get, dev1-capi/*, allow
+        - p, proj:dev1-capi:operator, applications, sync, dev1-capi/*, allow

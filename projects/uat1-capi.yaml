@@ -37,5 +37,5 @@ spec:
       groups:
         - christopher.peters@broadcom.com
       policies:
-        - p, proj:uat1-capi:operator, applications, get, platform-bootstrap/*, allow
-        - p, proj:uat1-capi:operator, applications, sync, platform-bootstrap/*, allow
+        - p, proj:uat1-capi:operator, applications, get, uat1-capi/*, allow
+        - p, proj:uat1-capi:operator, applications, sync, uat1-capi/*, allow
