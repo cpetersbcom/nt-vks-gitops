@@ -16,16 +16,18 @@ Create AppProject
 
 ```
 kubectl apply -f projects/dev1-cap1.yaml
-# Verify
-kubectl get appproject/dev1-capi
+
+# Verify creation and status
+kubectl get appproject/dev1-capi -o yaml
 ```
 
 Create ApplicationSet
 
 ```
 kubectl apply -f supervisors/dev1/applicationset.yaml
-# Verify
-kubectl get applicationset/dev1-capi
+
+# Verify creation and status
+kubectl get applicationset/dev1-capi -o yaml
 ```
 
 
