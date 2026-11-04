@@ -1,13 +1,13 @@
-# Example Cluster Lifecycle Management with ArgoCD
+# Example VKS Cluster Lifecycle Management with ArgoCD
 
 ## Repo Structure
 
 ```
-projects/                               # ArgoCD AppProjects
-supervisors/                            # Supervisors
-supervisors/<name>                      # Supervisor Instance
-supervisors/<name>/applicationset.yaml  # Cluster Lifecycle ApplicationSet for Supervisor
-supervisors/<name>/cluster-<name>.yaml  # Cluster Instance
+projects/                                   # ArgoCD AppProjects
+supervisors/                                # VCF Supervisors
+supervisors/<name>                          # Supervisor Instance
+supervisors/<name>/applicationset.yaml      # Cluster Lifecycle ApplicationSet for Supervisor
+supervisors/<name>/cluster-<name>.yaml      # VKS Guest Cluster Instance
 ```
 
 ## Usage
