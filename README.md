@@ -1,5 +1,9 @@
 # Example VKS Cluster Lifecycle Management with ArgoCD
 
+*Note:* 
+This example uses hard-coded values from a lab environment, yours will be different.
+Update namespaces, server urls, rbac group, etc accordingly.
+
 ## Repo Structure
 
 ```
