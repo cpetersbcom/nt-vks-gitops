@@ -1,0 +1,11 @@
+apiVersion: argocd-service.vsphere.vmware.com/v1alpha1
+kind: ManagedEntity
+metadata:
+  name: cpeters-dev1-zg2v4-default-project-ui
+  namespace: cpeters-dev1-zg2v4
+spec:
+  targetRef:
+    apiGroup: ""
+    kind: Namespace
+    name: cpeters-dev1-zg2v4
+    project: default-project
