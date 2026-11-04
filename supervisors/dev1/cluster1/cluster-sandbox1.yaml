@@ -41,16 +41,3 @@ spec:
           metadata:
             annotations:
               run.tanzu.vmware.com/resolve-os-image: os-name=photon
----
-apiVersion: argocd-service.vsphere.vmware.com/v1alpha1
-kind: ManagedEntity
-metadata:
-  name: sandbox1-cpeters-dev1-zg2v4-default-project
-  namespace: cpeters-dev1-zg2v4
-spec:
-  targetRef:
-    apiGroup: cluster.x-k8s.io
-    kind: Cluster
-    name: sandbox1
-    namespace: cpeters-dev1-zg2v4
-    project: default-project
