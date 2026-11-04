@@ -1,8 +1,8 @@
 apiVersion: cluster.x-k8s.io/v1beta2
 kind: Cluster
 metadata:
-  name: sandbox2
-  namespace: cpeters-ct6l9
+  name: sandbox1
+  namespace: cpeters-dev1-zg2v4
 spec:
   clusterNetwork:
     pods:
@@ -17,6 +17,7 @@ spec:
       name: builtin-generic-v3.7.0
       namespace: vmware-system-vks-public
     version: v1.35.8---vmware.2-vkr.3
+    # version: v1.36.4---vmware.2-vkr.3
     variables:
       - name: vmClass
         value: best-effort-medium
@@ -35,9 +36,21 @@ spec:
     workers:
       machineDeployments:
         - class: node-pool
-          name: sandbox2-np-mk8n
+          name: sandbox1-np-mk8n
           replicas: 1
           metadata:
             annotations:
               run.tanzu.vmware.com/resolve-os-image: os-name=photon
-
+---
+apiVersion: argocd-service.vsphere.vmware.com/v1alpha1
+kind: ManagedEntity
+metadata:
+  name: sandbox1-cpeters-dev1-zg2v4-default-project
+  namespace: cpeters-dev1-zg2v4
+spec:
+  targetRef:
+    apiGroup: cluster.x-k8s.io
+    kind: Cluster
+    name: sandbox1
+    namespace: cpeters-dev1-zg2v4
+    project: default-project

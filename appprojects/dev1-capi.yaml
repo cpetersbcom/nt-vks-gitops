@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: dev1-capi
+  namespace: cpeters-dev1-zg2v4
+spec:
+  description: Dev1 Supervisor Cluster Lifecycle Management
+  sourceRepos:
+    - https://github.com/cpetersbcom/nt-vks-gitops.git
+  destinations:
+    - server: https://auto.vcf02.showcase.tmm.broadcom.lab/proxy/k8s/namespaces/urn:vcloud:namespace:33133489-84b6-404f-b5f2-6c59298d5858
+      namespace: cpeters-dev1-zg2v4
+  clusterResourceWhitelist: []
+  namespaceResourceWhitelist:
+    - group: 'argoproj.io'
+      kind: Application
+    - group: 'argoproj.io'
+      kind: AppProject
+    - group: 'argoproj.io'
+      kind: ApplicationSet
+    - group: 'argocd-service.vsphere.vmware.com'
+      kind: EntityManagementPolicy
+    - group: 'argocd-service.vsphere.vmware.com'
+      kind: ManagedEntity
+    - group: 'cluster.x-k8s.io'
+      kind: Cluster
+  # Todo: Implement groups for fine grained access control
+  roles:
+    - name: observer
+      groups:
+        - christopher.peters@broadcom.com
+      policies:
+        - p, proj:platform-bootstrap:observer, applications, get, platform-bootstrap/*, allow
+    - name: operator
+      groups:
+        - christopher.peters@broadcom.com
+      policies:
+        - p, proj:platform-bootstrap:operator, applications, get, platform-bootstrap/*, allow
+        - p, proj:platform-bootstrap:operator, applications, sync, platform-bootstrap/*, allow
