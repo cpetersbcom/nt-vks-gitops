@@ -24,16 +24,18 @@ spec:
       kind: ManagedEntity
     - group: 'cluster.x-k8s.io'
       kind: Cluster
+    - group: 'addons.kubernetes.vmware.com'
+      kind: AddonInstall
   # Todo: Implement groups for fine grained access control
   roles:
     - name: observer
       groups:
         - christopher.peters@broadcom.com
       policies:
-        - p, proj:platform-bootstrap:observer, applications, get, platform-bootstrap/*, allow
+        - p, proj:uat1-capi:observer, applications, get, platform-bootstrap/*, allow
     - name: operator
       groups:
         - christopher.peters@broadcom.com
       policies:
-        - p, proj:platform-bootstrap:operator, applications, get, platform-bootstrap/*, allow
-        - p, proj:platform-bootstrap:operator, applications, sync, platform-bootstrap/*, allow
+        - p, proj:uat1-capi:operator, applications, get, platform-bootstrap/*, allow
+        - p, proj:uat1-capi:operator, applications, sync, platform-bootstrap/*, allow
