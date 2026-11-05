@@ -1,8 +1,13 @@
 # Example VKS Cluster Lifecycle Management with ArgoCD
 
-*Note:* 
-This example uses hard-coded values from a lab environment, yours will be different.
-Update namespaces, server urls, rbac group, etc accordingly.
+Example of managing the lifecycle of VKS guest clusters with GitOps.
+This instance of ArgoCD lacks Kustomize which results in some duplication.
+
+The overall flow:
+- Register supervisor cluster with ArgoCD
+- Create an ArgoCD AppProject with limited scopes
+- Create an ApplicationSet for managing guest clusters
+
 
 ## Repo Structure
 
@@ -16,8 +21,6 @@ supervisors/<name>/clusters/<cluster>/     # VKS Guest Cluster Instance
 ```
 
 ## Deployment
-
-Order of operations matters. Supervisor cluster must be registered with ArgoCD with a ManagedEntity prior to creating AppProjects, ApplicationSets, Applications, etc.
 
 ### Register Supervisor Cluster with ArgoCD
 
