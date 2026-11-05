@@ -62,3 +62,9 @@ kubectl get applicationset/dev1-capi -o yaml
 supervisors/dev1/clusters/<my-new-cluster>
 ```
 
+## Todo / Unimplemented
+
+### Fine Grain RBAC
+
+Currently the RBAC group is assigned to my user account with full admin permissions
+Create vSphere User/Group with restricted permissions and adjust RBAC in AppProject
