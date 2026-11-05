@@ -8,6 +8,8 @@ The overall flow:
 - Create an ArgoCD AppProject with limited scopes
 - Create an ApplicationSet for managing guest clusters
 
+Note: Grep for 'cpeters' and replace accordingly
+
 
 ## Repo Structure
 
