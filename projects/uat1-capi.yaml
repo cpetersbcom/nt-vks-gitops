@@ -8,7 +8,7 @@ spec:
   sourceRepos:
     - https://github.com/cpetersbcom/nt-vks-gitops.git
   destinations:
-    - server: https://auto.vcf02.showcase.tmm.broadcom.lab/proxy/k8s/namespaces/urn:vcloud:namespace:0345a3a3-3a85-4a59-acb7-f7fa409c8f04
+    - name: uat1-supervisor
       namespace: cpeters-uat1-z4w5j
   clusterResourceWhitelist: []
   namespaceResourceWhitelist:

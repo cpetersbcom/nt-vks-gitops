@@ -1,0 +1,13 @@
+apiVersion: argocd-service.vsphere.vmware.com/v1alpha1
+kind: ManagedEntity
+metadata:
+  name: supervisor
+  namespace: cpeters-uat1-z4w5j
+spec:
+  clusterName: uat1-supervisor
+  argoCDProject: dev1-capi
+  targetRef:
+    apiGroup: ""
+    kind: Namespace
+    name: cpeters-uat1-z4w5j
+    project: default-project
