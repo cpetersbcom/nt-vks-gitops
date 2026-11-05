@@ -10,8 +10,9 @@ Update namespaces, server urls, rbac group, etc accordingly.
 projects/                                  # ArgoCD AppProjects
 supervisors/                               # VCF Supervisors
 supervisors/<name>                         # Supervisor Instance
-supervisors/<name>/applicationset.yaml     # Cluster Lifecycle ApplicationSet for Supervisor
-supervisors/<name>/cluster-<name>.yaml     # VKS Guest Cluster Instance
+supervisors/<name>/managedentity.yaml      # Supervisor Registration with ArgoCD
+supervisors/<name>/applicationset.yaml     # Cluster Lifecycle ApplicationSet for VKS Guest Clusters
+supervisors/<name>/clusters/<cluster>/      # VKS Guest Cluster Instance
 ```
 
 ## Deployment
@@ -23,6 +24,15 @@ kubectl apply -f projects/dev1-cap1.yaml
 
 # Verify creation and status
 kubectl get appproject/dev1-capi -o yaml
+```
+
+Register Supervisor Cluster with ArgoCD
+
+```
+kubectl apply -f supervisors/dev1/managedentity.yaml
+
+# Verify creation and status
+kubectl get managedentity/supervisor -o yaml
 ```
 
 Create ApplicationSet
@@ -37,12 +47,10 @@ kubectl get applicationset/dev1-capi -o yaml
 
 ## Usage
 
-### Create a new VKS guest cluster by adding new yaml manifest
-
-Must follow the pattern of `cluster-<name>.yaml`
+### Create a new VKS guest cluster by adding new dir under clusters/
 
 
 ```
-supervisors/dev1/cluster-newcluster.yaml
+supervisors/dev1/clusters/<my-new-cluster>
 ```
 
