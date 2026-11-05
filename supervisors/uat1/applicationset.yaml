@@ -11,10 +11,10 @@ spec:
       repoURL: https://github.com/cpetersbcom/nt-vks-gitops.git
       revision: HEAD
       directories:
-      - path: supervisors/uat1/*
+      - path: supervisors/uat1/clusters/*
   template:
     metadata:
-      name: 'uat1-{{ trimSuffix ".yaml" .path.filenameNormalized }}'
+      name: 'uat1-{{.path.basename}}'
     spec:
       project: uat1-capi
       source:

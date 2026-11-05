@@ -11,10 +11,10 @@ spec:
       repoURL: https://github.com/cpetersbcom/nt-vks-gitops.git
       revision: HEAD
       directories:
-      - path: supervisors/dev1/*
+      - path: supervisors/dev1/clusters/*
   template:
     metadata:
-      name: 'dev1-{{.path.basename}}-cluster'
+      name: 'dev1-{{.path.basename}}'
     spec:
       project: dev1-capi
       source:
