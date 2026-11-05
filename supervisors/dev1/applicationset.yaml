@@ -10,19 +10,17 @@ spec:
   - git:
       repoURL: https://github.com/cpetersbcom/nt-vks-gitops.git
       revision: HEAD
-      files:
-      - path: supervisors/dev1/cluster-*.yaml
+      directories:
+      - path: supervisors/dev1/*
   template:
     metadata:
-      name: 'dev1-{{ trimSuffix ".yaml" .path.filenameNormalized }}'
+      name: 'dev1-{{.path.basename}}-cluster'
     spec:
       project: dev1-capi
       source:
         repoURL: https://github.com/cpetersbcom/nt-vks-gitops.git
         targetRevision: HEAD
-        path: 'supervisors/dev1'
-        directory:
-          include: '{{ .path.filename }}'
+        path: '{{.path.path}}'
       destination:
         server: https://auto.vcf02.showcase.tmm.broadcom.lab/proxy/k8s/namespaces/urn:vcloud:namespace:33133489-84b6-404f-b5f2-6c59298d5858
         namespace: cpeters-dev1-zg2v4
@@ -34,6 +32,6 @@ spec:
         - CreateNamespace=false
   syncPolicy:
     # Prevents ApplicationSet controller from modifying or deleting Applications
-    applicationsSync: create-update
+    applicationsSync: create-only
     # Prevent an Application's child resources from being deleted, when the parent Application is deleted
     preserveResourcesOnDeletion: true
