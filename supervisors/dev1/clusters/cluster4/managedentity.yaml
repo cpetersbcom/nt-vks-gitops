@@ -1,0 +1,13 @@
+apiVersion: argocd-service.vsphere.vmware.com/v1alpha1
+kind: ManagedEntity
+metadata:
+  name: cluster4
+  namespace: cpeters-dev1-zg2v4
+spec:
+  targetRef:
+    apiGroup: cluster.x-k8s.io
+    kind: Cluster
+    name: cluster4
+    namespace: cpeters-dev1-zg2v4
+    project: default-project
+
