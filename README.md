@@ -7,15 +7,24 @@ Update namespaces, server urls, rbac group, etc accordingly.
 ## Repo Structure
 
 ```
+bootstrap/                                 # Supervisor Registration with ArgoCD
 projects/                                  # ArgoCD AppProjects
 supervisors/                               # VCF Supervisors
 supervisors/<name>                         # Supervisor Instance
-supervisors/<name>/managedentity.yaml      # Supervisor Registration with ArgoCD
 supervisors/<name>/applicationset.yaml     # Cluster Lifecycle ApplicationSet for VKS Guest Clusters
-supervisors/<name>/clusters/<cluster>/      # VKS Guest Cluster Instance
+supervisors/<name>/clusters/<cluster>/     # VKS Guest Cluster Instance
 ```
 
 ## Deployment
+
+Register Supervisor Cluster with ArgoCD
+
+```
+kubectl apply -f bootstrap/dev1/managedentity-supervisor.yaml
+
+# Verify creation and status
+kubectl get managedentity/supervisor -o yaml
+```
 
 Create AppProject
 
@@ -26,14 +35,6 @@ kubectl apply -f projects/dev1-cap1.yaml
 kubectl get appproject/dev1-capi -o yaml
 ```
 
-Register Supervisor Cluster with ArgoCD
-
-```
-kubectl apply -f supervisors/dev1/managedentity.yaml
-
-# Verify creation and status
-kubectl get managedentity/supervisor -o yaml
-```
 
 Create ApplicationSet
 

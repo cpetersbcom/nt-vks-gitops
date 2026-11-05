@@ -5,7 +5,7 @@ metadata:
   namespace: cpeters-uat1-z4w5j
 spec:
   clusterName: uat1-supervisor
-  argoCDProject: dev1-capi
+  argoCDProject: uat1-capi
   targetRef:
     apiGroup: ""
     kind: Namespace
