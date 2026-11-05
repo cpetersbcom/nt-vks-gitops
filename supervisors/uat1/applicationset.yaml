@@ -10,8 +10,8 @@ spec:
   - git:
       repoURL: https://github.com/cpetersbcom/nt-vks-gitops.git
       revision: HEAD
-      files:
-      - path: supervisors/uat1/cluster-*.yaml
+      directories:
+      - path: supervisors/uat1/*
   template:
     metadata:
       name: 'uat1-{{ trimSuffix ".yaml" .path.filenameNormalized }}'
@@ -24,7 +24,7 @@ spec:
         directory:
           include: '{{ .path.filename }}'
       destination:
-        server: https://auto.vcf02.showcase.tmm.broadcom.lab/proxy/k8s/namespaces/urn:vcloud:namespace:0345a3a3-3a85-4a59-acb7-f7fa409c8f04
+        name: uat1-supervisor
         namespace: cpeters-uat1-z4w5j
       syncPolicy:
         automated:
