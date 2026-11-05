@@ -1,7 +1,7 @@
 apiVersion: argocd-service.vsphere.vmware.com/v1alpha1
 kind: ManagedEntity
 metadata:
-  name: uat1-cpeters-uat1-z4w5j-default-project
+  name: cluster-uat1
   namespace: cpeters-uat1-z4w5j
 spec:
   targetRef:

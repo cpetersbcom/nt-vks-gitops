@@ -1,7 +1,7 @@
 apiVersion: argocd-service.vsphere.vmware.com/v1alpha1
 kind: ManagedEntity
 metadata:
-  name: sandbox1-cpeters-dev1-zg2v4-default-project
+  name: cluster-sandbox1
   namespace: cpeters-dev1-zg2v4
 spec:
   targetRef:
